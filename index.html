@@ -8,69 +8,77 @@
     <script>linkvertise(3452702, {whitelist: [], blacklist: []});</script>
 
     <style>
-        body { background-color: #0d0d0d; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
-        header { background: #1a1a1a; text-align: center; padding: 40px 20px; border-bottom: 2px solid #2563eb; }
-        h1 { margin: 0; font-size: 2.5em; letter-spacing: 2px; color: #fff; text-transform: uppercase; }
-        p.subtitle { color: #888; margin-top: 10px; }
+        :root { --main-blue: #2563eb; --bg-dark: #0d0d0d; --card-bg: #161616; }
+        body { background-color: var(--bg-dark); color: #e0e0e0; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 0; }
+        header { background: #1a1a1a; text-align: center; padding: 40px 20px; border-bottom: 2px solid var(--main-blue); box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        h1 { margin: 0; font-size: 2.8em; letter-spacing: 2px; color: #fff; text-transform: uppercase; text-shadow: 0 0 10px rgba(37,99,235,0.4); }
+        .subtitle { color: #888; margin-top: 10px; font-weight: 300; }
 
-        /* Buscador */
-        .search-box { margin-top: 20px; }
-        input[type="text"] { padding: 15px; width: 100%; max-width: 500px; border-radius: 30px; border: none; background: #333; color: white; text-align: center; font-size: 1.1em; outline: none; transition: 0.3s; }
-        input[type="text"]:focus { background: #444; box-shadow: 0 0 10px rgba(37, 99, 235, 0.5); }
+        .search-box { margin-top: 25px; }
+        input[type="text"] { padding: 15px; width: 100%; max-width: 500px; border-radius: 30px; border: 1px solid #333; background: #222; color: white; text-align: center; font-size: 1.1em; outline: none; transition: 0.3s; }
+        input[type="text"]:focus { border-color: var(--main-blue); box-shadow: 0 0 15px rgba(37, 99, 235, 0.3); }
 
-        /* Contenedor */
         .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; }
 
-        /* Tarjetas */
-        .card { background: #161616; border-radius: 15px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; position: relative; border: 1px solid #333; }
-        .card:hover { transform: translateY(-7px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); border-color: #2563eb; }
+        .card { background: var(--card-bg); border-radius: 15px; overflow: hidden; transition: 0.3s; border: 1px solid #222; position: relative; }
+        .card:hover { transform: translateY(-8px); border-color: var(--main-blue); box-shadow: 0 10px 25px rgba(0,0,0,0.6); }
 
-        .card-img-container { width: 100%; height: 200px; overflow: hidden; position: relative; }
-        .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .card:hover .card-img { transform: scale(1.1); }
+        .card-img-container { width: 100%; height: 210px; overflow: hidden; }
+        .card-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .card:hover .card-img { transform: scale(1.08); }
 
         .card-body { padding: 20px; text-align: center; }
-        h3 { margin: 0 0 10px 0; font-size: 1.2em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .tag { background: #2563eb; color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.8em; text-transform: uppercase; font-weight: bold; }
+        h3 { margin: 0 0 12px 0; font-size: 1.25em; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .tag { background: #222; color: var(--main-blue); border: 1px solid var(--main-blue); padding: 4px 12px; border-radius: 20px; font-size: 0.75em; text-transform: uppercase; font-weight: bold; }
 
-        /* Botón */
-        .btn { display: block; width: 100%; padding: 12px 0; background: linear-gradient(45deg, #2563eb, #1d4ed8); color: white; text-decoration: none; border-radius: 8px; margin-top: 15px; font-weight: bold; letter-spacing: 1px; transition: 0.3s; }
-        .btn:hover { filter: brightness(1.2); }
+        .btn { display: block; width: 100%; padding: 14px 0; background: var(--main-blue); color: white; text-decoration: none; border-radius: 8px; margin-top: 18px; font-weight: bold; letter-spacing: 1px; transition: 0.2s; }
+        .btn:hover { background: #1d4ed8; box-shadow: 0 0 15px rgba(37, 99, 235, 0.4); }
 
-        footer { text-align: center; padding: 40px; color: #555; font-size: 0.9em; border-top: 1px solid #222; margin-top: 50px; }
+        footer { text-align: center; padding: 60px 20px; color: #555; font-size: 0.9em; border-top: 1px solid #1a1a1a; margin-top: 80px; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>TOBA ARCHIVE</h1>
-    <p class="subtitle">The Optimized Bedrock Archive</p>
+    <p class="subtitle">The Optimized Bedrock Archive • Marketplace Content</p>
     <div class="search-box">
-        <input type="text" id="search" placeholder="🔍 ¿Qué buscas hoy? (Addons, Texturas...)">
+        <input type="text" id="search" placeholder="🔍 Buscar addons, texturas o mundos...">
     </div>
 </header>
 
 <div class="container">
     <div class="grid" id="grid-content">
-        <p style="text-align:center; width:100%; color:#666;">Cargando catálogo...</p>
+        <p style="text-align:center; width:100%; color:#666;">Iniciando protocolos de carga...</p>
     </div>
 </div>
 
 <footer>
-    <p>&copy; 2026 TOBA Project | Managed by CZeta415</p>
+    <p>&copy; 2026 TOBA Project | Eduardo "Raccoon" Edition</p>
 </footer>
 
 <script>
-    // Cargar la base de datos generada por Python
-    fetch('assets/data/addons.json')
-        .then(res => res.json())
-        .then(data => {
-            window.allItems = data.items.reverse(); // Lo más nuevo primero
-            render(window.allItems);
+    let allItems = [];
+
+    // Intentar cargar la base de datos
+    // Usamos una ruta relativa que siempre apunte a la carpeta assets
+    fetch('./assets/data/addons.json')
+        .then(res => {
+            if (!res.ok) throw new Error('No se encontró el archivo JSON');
+            return res.json();
         })
-        .catch(e => {
-            document.getElementById('grid-content').innerHTML = '<p style="text-align:center;">Aún no hay stock disponible.</p>';
+        .then(data => {
+            allItems = data.items.reverse(); 
+            render(allItems);
+        })
+        .catch(err => {
+            console.error(err);
+            document.getElementById('grid-content').innerHTML = `
+                <div style="text-align:center; width:100%; padding: 40px;">
+                    <p style="color:#ff4444; font-size: 1.2em;">⚠️ Error de conexión con el almacén</p>
+                    <p style="color:#666;">Asegúrate de que los archivos estén en la raíz de tu GitHub.</p>
+                </div>`;
         });
 
     function render(items) {
@@ -78,7 +86,7 @@
         grid.innerHTML = '';
 
         if(items.length === 0) {
-            grid.innerHTML = '<p style="text-align:center;">No se encontraron resultados.</p>';
+            grid.innerHTML = '<p style="text-align:center; width:100%;">No se encontraron resultados para tu búsqueda.</p>';
             return;
         }
 
@@ -86,22 +94,25 @@
             const html = `
             <div class="card">
                 <div class="card-img-container">
-                    <img src="${item.img_toba}" class="card-img" onerror="this.src='https://via.placeholder.com/300x200?text=TOBA'">
+                    <img src="${item.img_toba}" class="card-img" alt="${item.nombre}" onerror="this.src='https://via.placeholder.com/300x210/111/2563eb?text=TOBA+ARCHIVE'">
                 </div>
                 <div class="card-body">
-                    <h3>${item.nombre}</h3>
                     <span class="tag">${item.categoria}</span>
-                    <a href="${item.link_descarga}" class="btn" target="_blank">DESCARGAR</a>
+                    <h3>${item.nombre}</h3>
+                    <a href="${item.link_descarga}" class="btn">DESCARGAR</a>
                 </div>
             </div>`;
             grid.innerHTML += html;
         });
     }
 
-    // Buscador en tiempo real
+    // Buscador optimizado
     document.getElementById('search').addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
-        const filtered = window.allItems.filter(i => i.nombre.toLowerCase().includes(term));
+        const filtered = allItems.filter(i => 
+            i.nombre.toLowerCase().includes(term) || 
+            i.categoria.toLowerCase().includes(term)
+        );
         render(filtered);
     });
 </script>
